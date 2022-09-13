@@ -1,0 +1,39 @@
+{
+  "name": "indigidao-hackerearth-web3athon",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:ChromaPDX/liquidCollectionXChroma.git",
+  "author": "adam wong <adamwong246@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@thirdweb-dev/contracts": "^3",
+    "@thirdweb-dev/react": "3.0.0",
+    "@thirdweb-dev/sdk": "3.0.0",
+    "assert": "^2.0.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "ethers": "5.7.0",
+    "fs": "^0.0.1-security",
+    "html-webpack-plugin": "^5.5.0",
+    "https-browserify": "^1.0.0",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "thirdweb": "^0.7.10",
+    "ts-loader": "^9.3.1",
+    "typescript": "4.8.2",
+    "url": "^0.11.0",
+    "web3-eth-contract": "^1.7.5",
+    "web3": "^1.7.5",
+    "web3modal": "^1.9.9",
+    "webpack": "^5.74.0"
+  },
+  "devDependencies": {
+    "hardhat": "^2.10.1",
+    "webpack-cli": "^4.10.0"
+  },
+  "scripts": {
+    "web3:build": "npx thirdweb@latest detect",
+    "web3:deploy": "npx thirdweb@latest deploy",
+    "web2:dev": "yarn webpack serve --env "
+  }
+}
