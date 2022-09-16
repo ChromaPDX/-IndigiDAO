@@ -7,7 +7,8 @@
     "target": "es2017",
     "allowJs": true,
     "jsx": "react",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "strict": false
   },
   "files": [
     "index.tsx"

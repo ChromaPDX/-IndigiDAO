@@ -1,75 +1,87 @@
-import Web3 from 'web3';
-import Web3Modal from 'web3modal';
 import ReactDom from "react-dom";
-import React, { useState } from "react";
-import { useContract, useContractRead } from "@thirdweb-dev/react";
+import React from "react";
+import usePromise from 'react-use-promise';
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
+import { useContract, useContractRead, useMetamask, useAddress } from "@thirdweb-dev/react";
 
-
-const ContractAbi = require("./artifacts/contracts/ERC721RedeemableSignatureMint.sol/ERC721RedeemableSignatureMint.json");
+const ContractAbi = require("./artifacts/contracts/ERC721RedeemableEnumerableSignatureMint.sol/ERC721RedeemableEnumerableSignatureMint.json");
 
 declare var ADDRESS: string;
 
-const App = async () => {
+const IndigdaoApp = (props: { ownerAdress: string }) => {
+  // const { contract } = useContract(ADDRESS);
 
-  console.log("hello redeem.ts", ADDRESS, ContractAbi);
-  const web3Modal = new Web3Modal();
-  const provider = await web3Modal.connect();
-  const web3 = new Web3(provider);
-  const networkId = await web3.eth.net.getId();
-  const accounts = await web3.eth.getAccounts();
-  const myWalletAddress = accounts[0]
+  // const totalSupplyContractRead = useContractRead(contract, "totalSupply");
+  // const balanceOfContractRead = useContractRead(contract, "balanceOf", props.ownerAdress);
 
-  const { contract } = useContract("0x35EACB3e82Acbd0ea85467e40C7B1E76a913673b");
-  const { data, isLoading } = useContractRead(contract, "balanceOf", myWalletAddress)
+  const sdk = new ThirdwebSDK("rinkeby");
+
+  const [result, error, state] = usePromise(
+    () => new Promise(resolve => {
+      return sdk.getContract(ADDRESS).then((contract) => {
+        resolve(contract.erc1155.getAll())
+      })
+    }),
+    // () => {
+    //   new Promise.resolve()sdk.getContract(ADDRESS)
+    // },
+    []
+  );
+
+  // const contract = await sdk.getContract("0x35EACB3e82Acbd0ea85467e40C7B1E76a913673b");
+  console.log(result)
+
 
   return (<div>
-    Hello React
-    <pre><code>{JSON.stringify(contract, null, 2)}</code></pre>
-    <pre><code>{JSON.stringify(data, null, 2)}</code></pre>
-    <pre><code>{JSON.stringify(isLoading, null, 2)}</code></pre>
+    <h3>hello IndigdaoApp</h3>
+
+    <pre>
+      {JSON.stringify({ error, state }, null, 2)}
+    </pre>
+
+    {/* {
+      state === "resolved" : 
+    } */}
+    {/* 
+    {
+      totalSupplyContractRead.isLoading ? <pre>loading total supply...</pre> : <pre>total supply: {totalSupplyContractRead.data._hex}</pre>
+    }
+
+    {
+      balanceOfContractRead.isLoading ? <pre>loading balance of...</pre> : <pre>your NFTs from this collection: {balanceOfContractRead.data._hex}</pre>
+    } */}
+
+  </div >)
+};
+
+const Web3Dapp = () => {
+  const connectWithMetamask = useMetamask();
+  const address = useAddress();
+
+  return (<div>
+    {address ? (
+      <>
+        <h2>Connected as {address}</h2>
+        <IndigdaoApp ownerAdress={address} />
+      </>
+    ) : (
+      <button onClick={connectWithMetamask}>Connect Metamask Wallet</button>
+    )}
   </div>)
 };
 
+const ThirdWebApp = () =>
+  <>
+    <h1>IndigDAO</h1>
+    <ThirdwebProvider desiredChainId={ChainId.Rinkeby}>
+      <Web3Dapp />
+    </ThirdwebProvider>
+  </>
+
+
+
 ReactDom.render(
-  App(),
+  ThirdWebApp(),
   document.getElementsByTagName('body')[0]
 );
-
-
-
-// // const web3 = new Web3(window.web3.currentProvider);
-
-// // console.log("your account", web3.eth.accounts);
-
-// var contract = new web3.eth.Contract(ContractAbi.abi, ADDRESS);
-// contract.methods.walletHoldsToken(myWalletAddress).send({ from: myWalletAddress })
-//   .on('receipt', function (r) {
-//     console.log("receipt", r)
-//   });
-
-// console.log("goodbye redeem.ts", myWalletAddress);
-
-// // const walletHasTokenOfCollection = (collectionId: String): Promise<'NoWallet' | 'NoToken' | 'Yes'> => {
-// //   return new Promise((res, rej) => {
-// //     res('NoWallet');
-// //   })
-// // }
-
-// // const redeem = (collectionId: String): any => {
-// //   walletHasTokenOfCollection(collectionId).then((usecase) => {
-// //     switch (usecase) {
-// //       case 'NoWallet':
-// //         alert('go install metamask');
-// //       case 'NoToken':
-// //         alert("you dont have the right token");
-// //       case 'Yes':
-// //         alert("AOK");
-// //     }
-
-// //   })
-// // }
-
-// // module.exports = {
-// //   walletHasTokenOfCollection,
-// //   redeem
-// // }
