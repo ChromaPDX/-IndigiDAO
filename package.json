@@ -17,6 +17,7 @@
     "html-webpack-plugin": "^5.5.0",
     "https-browserify": "^1.0.0",
     "os-browserify": "^0.3.0",
+    "path": "^0.12.7",
     "react": "18.2.0",
     "react-dom": "^18.2.0",
     "react-use-promise": "^0.5.0",
@@ -38,7 +39,8 @@
   "scripts": {
     "web3:build": "npx thirdweb@latest detect",
     "web3:deploy": "npx thirdweb@latest deploy",
-    "web2:dev": "yarn webpack serve --env "
+    "web2:dev": "yarn webpack serve --env ",
+    "web2:build": "yarn webpack --env "
   },
   "resolutions": {
     "zustand": "^3.6.9"

@@ -1,9 +1,8 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 const isProduction = process.env.NODE_ENV == "production";
-
-const stylesHandler = "style-loader";
 console.log(process.argv)
 const ADDRESS = process.argv[4];
 
@@ -17,9 +16,14 @@ const config = {
   devServer: {
     open: true,
     host: "localhost",
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
   },
   plugins: [
-    new HtmlWebpackPlugin({}),
+    // new HtmlWebpackPlugin({
+    //   template: 'index.html'
+    // }),
     new webpack.ProvidePlugin({ process: 'process/browser' }),
     new webpack.ProvidePlugin({ Buffer: ['buffer', 'Buffer'] }),
     new webpack.DefinePlugin({ ADDRESS: `"${ADDRESS}"` }),
@@ -34,7 +38,7 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: [stylesHandler, "css-loader"],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,

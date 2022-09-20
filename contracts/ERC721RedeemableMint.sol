@@ -51,4 +51,6 @@ contract ERC721RedeemableMint is ERC721Base {
         redeemable = false;
         emit Redeem(msg.sender, tokenId);
     }
+
+    
 }
