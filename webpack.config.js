@@ -56,14 +56,17 @@ const config = {
     extensions: [".tsx", ".ts", ".js", ".mjs"],
     fallback:
     {
-      url: require.resolve('url'),
-      fs: require.resolve('fs'),
       assert: require.resolve('assert'),
+      assert: require.resolve("assert/"),
+      buffer: require.resolve('buffer'),
       crypto: require.resolve('crypto-browserify'),
+      fs: require.resolve('fs'),
       http: require.resolve('stream-http'),
       https: require.resolve('https-browserify'),
-      buffer: require.resolve('buffer'),
+      os: require.resolve("os-browserify/browser"),
       stream: require.resolve('stream-browserify'),
+      url: require.resolve('url'),
+      url: require.resolve("url/")
     }
   },
 };

@@ -9,26 +9,24 @@
 
 pragma solidity ^0.8.4;
 
-import "@thirdweb-dev/contracts/base/ERC721SignatureMint.sol";
+import "@thirdweb-dev/contracts/base/ERC721Base.sol";
 import "@thirdweb-dev/contracts/eip/interface/IERC721Enumerable.sol";
 
-contract ERC721RedeemableEnumerableSignatureMint is
-    ERC721SignatureMint,
+contract ERC721RedeemableEnumerableMint is
+    ERC721Base,
     IERC721Enumerable
 {
     constructor(
         string memory _name,
         string memory _symbol,
         address _royaltyRecipient,
-        uint128 _royaltyBps,
-        address _primarySaleRecipient
+        uint128 _royaltyBps
     )
-        ERC721SignatureMint(
+        ERC721Base(
             _name,
             _symbol,
             _royaltyRecipient,
-            _royaltyBps,
-            _primarySaleRecipient
+            _royaltyBps
         )
     {}
 
