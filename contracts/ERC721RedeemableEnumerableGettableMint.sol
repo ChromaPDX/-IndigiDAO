@@ -29,6 +29,10 @@ contract ERC721RedeemableEnumerableGettableMint is
         bool redeemed;
     }
 
+     function  _canMint() internal pure override returns (bool) {
+        return true;
+    }
+
     function getTokenIds(address _owner) public view returns (Id2Uri[] memory) {
         uint256 lngth = ERC721A.balanceOf(_owner);
         Id2Uri[] memory _metadatasOfOwners = new Id2Uri[](lngth);

@@ -7,34 +7,6 @@ const ContractAbi = require("./artifacts/contracts/ERC721RedeemableEnumerableGet
 
 declare var ADDRESS: string;
 
-const Mint = () => {
-  return (<section class="py-5">
-    <div class="container px-4 px-lg-5 my-5">
-      <div class="row gx-4 gx-lg-5 align-items-center">
-        <div class="col-md-6">
-          <img class="card-img-top mb-5 mb-md-0" src="images/s556013787681641268_p538_i1_w1920.webp" alt="..." />
-          <img width="200px" class="mb-5 mb-md-0" src="images/exampleSignet.jpg" alt="..." />
-        </div>
-        <div class="col-md-6">
-
-          <h1 class="display-5 fw-bolder">Turquoise Bead Earrings</h1>
-          <div class="fs-5 mb-5">
-            <span>.7 ETH</span>
-          </div>
-          <p class="lead">Turquoise Beaded Earrings 2 inches from the base of the hook in length from Native Arts of the Rio Grande, owned by Patricia Maestas in Ohkay Owingeh, NM.</p>
-          <div class="d-flex">
-            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-              <i class="bi-cart-fill me-1"></i>
-              Mint
-            </button>
-          </div>
-          <img class="mb-5 mb-md-0" src="images/patricia-50.png" alt="..." />
-        </div>
-      </div>
-    </div>
-  </section>)
-}
-
 const Index = (props: any) => {
 
   const [nfts, setNfts] = useState([])
@@ -55,7 +27,7 @@ const Index = (props: any) => {
     const owner = await contract.methods.owner().call();
     const mine = await contract.methods.getTokenIds(account).call();
 
-    setLoadingState({ mine, owner, account });
+    setLoadingState({ mine, owner, account, mintTextInput: 'your text here' });
   }
 
   async function redeem(nftId) {
@@ -67,13 +39,13 @@ const Index = (props: any) => {
     const redeemed = await contract.methods.redeem(nftId).send({ from: accounts[0] });
   }
 
-  async function mint() {
+  async function mint(text: string) {
     const web3Modal = new Web3Modal()
     const provider = await web3Modal.connect()
     const web3 = new Web3(provider)
     const contract = new web3.eth.Contract(ContractAbi.abi, ADDRESS);
     const accounts = await web3.eth.getAccounts();
-    const mint = await contract.methods.mintTo(accounts[0], 'some value here').send({ from: accounts[0] });
+    const mint = await contract.methods.mintTo(accounts[0], text).send({ from: accounts[0] });
     console.log(mint)
   }
 
@@ -104,11 +76,13 @@ const Index = (props: any) => {
                           <img class="card-img-top" src="images/earrings.png" alt="..." />
                           <div class="card-body p-4">
                             <div class="text-center">
-                              <h5 class="fw-bolder">{ nft[1]}</h5>
+                              <h5 class="fw-bolder">{nft[1]}</h5>
+                              <h4 >redeemed: {nft[2].toString()}</h4>
                               $40.00 - $80.00
                             </div>
                           </div>
                         </div>
+                        
                         <button onClick={() => redeem(nft.id)}>
                           redeem
                         </button>
@@ -139,7 +113,12 @@ const Index = (props: any) => {
                 </div>
                 <p class="lead">Turquoise Beaded Earrings 2 inches from the base of the hook in length from Native Arts of the Rio Grande, owned by Patricia Maestas in Ohkay Owingeh, NM.</p>
                 <div class="d-flex">
-                  <button onClick={() => mint()} class="btn btn-outline-dark flex-shrink-0" type="button">
+
+                  <input type="text"
+                    onChange={(e) => setLoadingState({ ...loadingState, mintTextInput: e.target.value})}
+                    value={loadingState.mintTextInput}></input>
+
+                  <button onClick={() => mint(loadingState.mintTextInput)} class="btn btn-outline-dark flex-shrink-0" type="button">
                     <i class="bi-cart-fill me-1"></i>
                     Mint
                   </button>

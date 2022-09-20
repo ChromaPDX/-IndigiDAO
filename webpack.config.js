@@ -4,7 +4,7 @@ const path = require("path");
 
 const isProduction = process.env.NODE_ENV == "production";
 
-const ADDRESS = "0x7d9041a54b41864589BCF97D2535357Ab486B656";
+const ADDRESS = "0x1a90CAaa9B9bc5bEF20F442a8462132594b5f5FE";
 
 console.log("building project for contract @", ADDRESS);
 
