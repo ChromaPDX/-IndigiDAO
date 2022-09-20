@@ -3,8 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 const isProduction = process.env.NODE_ENV == "production";
-console.log(process.argv)
-const ADDRESS = process.argv[4];
+
+const ADDRESS = "0x7d9041a54b41864589BCF97D2535357Ab486B656";
 
 console.log("building project for contract @", ADDRESS);
 

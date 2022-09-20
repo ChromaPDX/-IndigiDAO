@@ -39,8 +39,8 @@
   "scripts": {
     "web3:build": "npx thirdweb@latest detect",
     "web3:deploy": "npx thirdweb@latest deploy",
-    "web2:dev": "yarn webpack serve --env ",
-    "web2:build": "yarn webpack --env "
+    "web2:dev": "yarn webpack serve ",
+    "web2:build": "yarn webpack"
   },
   "resolutions": {
     "zustand": "^3.6.9"
