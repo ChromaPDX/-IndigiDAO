@@ -12,8 +12,8 @@ const Mint = () => {
     <div class="container px-4 px-lg-5 my-5">
       <div class="row gx-4 gx-lg-5 align-items-center">
         <div class="col-md-6">
-          <img class="card-img-top mb-5 mb-md-0" src="/images/s556013787681641268_p538_i1_w1920.webp" alt="..." />
-          <img width="200px" class="mb-5 mb-md-0" src="/images/exampleSignet.jpg" alt="..." />
+          <img class="card-img-top mb-5 mb-md-0" src="images/s556013787681641268_p538_i1_w1920.webp" alt="..." />
+          <img width="200px" class="mb-5 mb-md-0" src="images/exampleSignet.jpg" alt="..." />
         </div>
         <div class="col-md-6">
 
@@ -28,7 +28,7 @@ const Mint = () => {
               Mint
             </button>
           </div>
-          <img class="mb-5 mb-md-0" src="/images/patricia-50.png" alt="..." />
+          <img class="mb-5 mb-md-0" src="images/patricia-50.png" alt="..." />
         </div>
       </div>
     </div>
@@ -80,7 +80,7 @@ const Index = (props: any) => {
   return (<>
     <header class="bg-dark py-5">
       <div class="container px-4 px-lg-5 my-5">
-        <image width="100% " src="/images/indigiexchange_front_pottery_1635438176.webp" />
+        <image width="100% " src="images/indigiexchange_front_pottery_1635438176.webp" />
       </div>
     </header>
 
@@ -101,7 +101,7 @@ const Index = (props: any) => {
                     <div key={i} >
                       <div >
                         <div class="card h-100">
-                          <img class="card-img-top" src="/images/earrings.png" alt="..." />
+                          <img class="card-img-top" src="images/earrings.png" alt="..." />
                           <div class="card-body p-4">
                             <div class="text-center">
                               <h5 class="fw-bolder">{ nft[1]}</h5>
@@ -128,8 +128,8 @@ const Index = (props: any) => {
           <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
               <div class="col-md-6">
-                <img class="card-img-top mb-5 mb-md-0" src="/images/s556013787681641268_p538_i1_w1920.webp" alt="..." />
-                <img width="200px" class="mb-5 mb-md-0" src="/images/exampleSignet.jpg" alt="..." />
+                <img class="card-img-top mb-5 mb-md-0" src="images/s556013787681641268_p538_i1_w1920.webp" alt="..." />
+                <img width="200px" class="mb-5 mb-md-0" src="images/exampleSignet.jpg" alt="..." />
               </div>
               <div class="col-md-6">
 
@@ -144,7 +144,7 @@ const Index = (props: any) => {
                     Mint
                   </button>
                 </div>
-                <img class="mb-5 mb-md-0" src="/images/patricia-50.png" alt="..." />
+                <img class="mb-5 mb-md-0" src="images/patricia-50.png" alt="..." />
               </div>
             </div>
           </div>
