@@ -73,12 +73,11 @@ const Index = (props: any) => {
                     <div key={i} >
                       <div >
                         <div class="card h-100">
-                          <img class="card-img-top" src="images/earrings.png" alt="..." />
+                          <img class="card-img-top" src="images/1-png.png" alt="..." />
                           <div class="card-body p-4">
                             <div class="text-center">
                               <h5 class="fw-bolder">{nft[1]}</h5>
-                              <h4 >redeemed: {nft[2].toString()}</h4>
-                              $40.00 - $80.00
+                              <h4 >redeemed: {nft[2].toString()}</h4>                              
                             </div>
                           </div>
                         </div>
@@ -107,11 +106,12 @@ const Index = (props: any) => {
               </div>
               <div class="col-md-6">
 
-                <h1 class="display-5 fw-bolder">Turquoise Bead Earrings</h1>
+                <h1 class="display-5 fw-bolder">Turquoise Blossom Sticker</h1>
                 <div class="fs-5 mb-5">
                   <span>.7 ETH</span>
                 </div>
-                <p class="lead">Turquoise Beaded Earrings 2 inches from the base of the hook in length from Native Arts of the Rio Grande, owned by Patricia Maestas in Ohkay Owingeh, NM.</p>
+                <p class="lead">Made by Enoch Endwarrior, proud member of the Diné (Navajo) and Onyota’aka (Oneida) Nations.
+                  Certified by <a href="https://nmccap.org/">New Mexico Community Capital</a>.</p>
                 <div class="d-flex">
 
                   <input type="text"
