@@ -4,9 +4,9 @@ const path = require("path");
 
 const isProduction = process.env.NODE_ENV == "production";
 
-const ADDRESS = "0x1a90CAaa9B9bc5bEF20F442a8462132594b5f5FE";
+// const ADDRESS = "0x426c2C35c5937a52A1Cd82cA2B47e39c76cee412";
 
-console.log("building project for contract @", ADDRESS);
+// console.log("building project for contract @", ADDRESS);
 
 const config = {
   entry: "./index.tsx",
@@ -21,12 +21,9 @@ const config = {
     },
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: 'index.html'
-    // }),
     new webpack.ProvidePlugin({ process: 'process/browser' }),
     new webpack.ProvidePlugin({ Buffer: ['buffer', 'Buffer'] }),
-    new webpack.DefinePlugin({ ADDRESS: `"${ADDRESS}"` }),
+    // new webpack.DefinePlugin({ ADDRESS: `"${ADDRESS}"` }),
   ],
   module: {
     unknownContextCritical: false,
