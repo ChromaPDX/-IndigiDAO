@@ -99,9 +99,16 @@ const Index = (props: any) => {
 
 
   return (<>
-    <header className="bg-dark py-5">
+    <header className=" py-5">
       <div className="container px-4 px-lg-5 my-5">
-        <img width="100% " src="images/indigiexchange_front_pottery_1635438176.webp" />
+        <div className="row">
+          <div className="col"></div>
+          <div className="col">
+            <img src="images/indigiDAO.png" />
+          </div>
+          <div className="col"></div>
+        </div>
+
       </div>
     </header>
 
@@ -118,9 +125,12 @@ const Index = (props: any) => {
               frameborder="0"
             />
           </div>
-          <div className="col-sm">
-            <img className="mb-5 mb-md-0" src={`images/${product.key}-artist.png`} alt="..." />
+          <div className="col-sm" style={{ marginTop: "120px" }}>
+
+            <img style={{ width: "10rem", margin: "1rem" }} src={`images/${product.key}-QR.png`} alt="..." />
+            <img style={{ width: "10rem", margin: "1rem" }} src={`images/${product.key}-artist.png`} alt="..." />
           </div>
+
 
         </div>)
       }
