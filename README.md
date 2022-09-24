@@ -2,6 +2,8 @@
 ## HackerEarth, Web3athon
 
 ## TL;DR
+### Set address in config.js
+
 ### Build contracts
 ```
 yarn web3:build

@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/adam/.nvm/versions/node/v16.14.2/bin/node /Users/adam/.nvm/versions/node/v16.14.2/bin/yarn web3:test
+  /Users/adam/.nvm/versions/node/v16.14.2/bin/node /Users/adam/.nvm/versions/node/v16.14.2/bin/yarn add @openzeppelin-presets
 
 PATH: 
   /Users/adam/.nvm/versions/node/v16.14.2/bin:/Users/adam/.nvm/versions/node/v16.14.2/bin:/Users/adam/.nvm/versions/node/v17.0.1/bin:/Users/adam/.nvm/versions/node/v16.14.2/bin:/Users/adam/.yarn/bin:/Users/adam/.config/yarn/global/node_modules/.bin:/Users/adam/.nvm/versions/node/v18.9.0/bin:/Users/adam/.nvm/versions/node/v18.9.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/adam/.yarn/bin:/Users/adam/.config/yarn/global/node_modules/.bin:/Users/adam/.nvm/versions/node/v18.9.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/adam/.cargo/bin:/Users/adam/.rvm/bin:/Users/adam/.rvm/bin
@@ -14,12 +14,17 @@ Platform:
   darwin arm64
 
 Trace: 
-  SyntaxError: /Users/adam/Code/IndigiDAO/package.json: Unexpected token } in JSON at position 1672
-      at JSON.parse (<anonymous>)
-      at /Users/adam/.nvm/versions/node/v16.14.2/lib/node_modules/yarn/lib/cli.js:1629:59
-      at Generator.next (<anonymous>)
-      at step (/Users/adam/.nvm/versions/node/v16.14.2/lib/node_modules/yarn/lib/cli.js:310:30)
-      at /Users/adam/.nvm/versions/node/v16.14.2/lib/node_modules/yarn/lib/cli.js:321:13
+  Error: https://registry.yarnpkg.com/@openzeppelin-presets: Request "https://registry.yarnpkg.com/@openzeppelin-presets" returned a 405
+      at Request.params.callback [as _callback] (/Users/adam/.nvm/versions/node/v16.14.2/lib/node_modules/yarn/lib/cli.js:66154:18)
+      at Request.self.callback (/Users/adam/.nvm/versions/node/v16.14.2/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:526:28)
+      at Request.<anonymous> (/Users/adam/.nvm/versions/node/v16.14.2/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:526:28)
+      at IncomingMessage.<anonymous> (/Users/adam/.nvm/versions/node/v16.14.2/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:645:28)
+      at IncomingMessage.emit (node:events:538:35)
+      at endReadableNT (node:internal/streams/readable:1345:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
@@ -30,6 +35,8 @@ npm manifest:
     "author": "adam wong <adamwong246@gmail.com>",
     "license": "MIT",
     "dependencies": {
+      "@openzeppelin/contracts": "^4.8.0-rc.1",
+      "@openzeppelin/contracts-upgradeable": "^4.7.3",
       "@thirdweb-dev/contracts": "3.1.8",
       "@web3-react/core": "^6.1.9",
       "@web3-react/injected-connector": "^6.0.7",
@@ -48,7 +55,7 @@ npm manifest:
       "react-use-promise": "^0.5.0",
       "stream-browserify": "^3.0.0",
       "stream-http": "^3.2.0",
-      "thirdweb": "^0.7.10",
+      "thirdweb": "^0.7.16",
       "truffle": "^5.5.30",
       "ts-loader": "^9.3.1",
       "typescript": "4.8.2",
@@ -72,7 +79,7 @@ npm manifest:
       "web3:deploy:dev": "truffle migrate --reset --network development",
       "web3:dashboard:dev": "truffle dashboard --network development",
       "web3:build": "npx thirdweb@latest detect",
-      "web3:deploy": "npx thirdweb@latest deploy",
+      "web3:deploy": "npx thirdweb@latest deploy"
     },
     "resolutions": {
       "zustand": "^3.6.9"
@@ -1049,6 +1056,16 @@ Lockfile:
       "@nomicfoundation/solidity-analyzer-win32-ia32-msvc" "0.0.3"
       "@nomicfoundation/solidity-analyzer-win32-x64-msvc" "0.0.3"
   
+  "@openzeppelin/contracts-upgradeable@^4.7.3":
+    version "4.7.3"
+    resolved "https://registry.yarnpkg.com/@openzeppelin/contracts-upgradeable/-/contracts-upgradeable-4.7.3.tgz#f1d606e2827d409053f3e908ba4eb8adb1dd6995"
+    integrity sha512-+wuegAMaLcZnLCJIvrVUDzA9z/Wp93f0Dla/4jJvIhijRrPabjQbZe6fWiECLaJyfn5ci9fqf9vTw3xpQOad2A==
+  
+  "@openzeppelin/contracts@^4.8.0-rc.1":
+    version "4.8.0-rc.1"
+    resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.8.0-rc.1.tgz#a7497b9b7453736bd008aeb9e0150361ab383f80"
+    integrity sha512-1wK+KHAGDLwiBp+ezRVT3Nz1PdlBbnoNTkiQw5k/y8bfGXbCfB/pofaSjzJtTJMB1OzKmRBYTBveCttxGEdSqQ==
+  
   "@pnpm/network.ca-file@^1.0.1":
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/@pnpm/network.ca-file/-/network.ca-file-1.0.1.tgz#16f88d057c68cd5419c1ef3dfa281296ea80b047"
@@ -1304,13 +1321,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@thirdweb-dev/contracts/-/contracts-3.1.8-0.tgz#847af3fe9a53368e7be04b7b6e6afe076d3d1676"
     integrity sha512-PiQjdRcAUBlu3poc4g6dN9KvjTgYsA1Vi+B/IgryptCgcJeMY4cldMabKCgPaCg9dPVpUq4O+SOM00P6mBNvGw==
   
-  "@thirdweb-dev/sdk@^3.0.0":
-    version "3.0.0"
-    resolved "https://registry.yarnpkg.com/@thirdweb-dev/sdk/-/sdk-3.0.0.tgz#7b3dd991ced32a78c53e44deb5588b555470334f"
-    integrity sha512-FKzOG12n92uF2jrYNb0XbCsfQs57Q2lsSWqMwLZqIscTqmm4BGIaJ380J2fJ5V1yQoVfwdS3lG8Z1AxrwDDdVQ==
+  "@thirdweb-dev/sdk@^3.0.5":
+    version "3.0.5"
+    resolved "https://registry.yarnpkg.com/@thirdweb-dev/sdk/-/sdk-3.0.5.tgz#963f6e7c68d0b79672ce90a4b4c5c6c1bd6d0d31"
+    integrity sha512-YW3hWnq0hUSZ4vpj8xkJuHiIZpUtberP3UH3FqXQsimnAiYNrtUB8f5cRmvddIU5eJZBpSI29m7zC+7/PzF3xA==
     dependencies:
       "@thirdweb-dev/contracts-js" "^1.1.8"
-      "@thirdweb-dev/storage" "^0.2.8"
+      "@thirdweb-dev/storage" "^1.0.2"
       cbor-web "^8.1.0"
       cross-fetch "^3.1.5"
       eventemitter3 "^4.0.7"
@@ -1319,17 +1336,17 @@ Lockfile:
       merkletreejs "^0.2.24"
       multihashes "^4.0.3"
       tiny-invariant "^1.2.0"
-      uuid "^8.3.2"
+      uuid "^9.0.0"
       zod "^3.11.6"
   
-  "@thirdweb-dev/storage@^0.2.8":
-    version "0.2.8"
-    resolved "https://registry.yarnpkg.com/@thirdweb-dev/storage/-/storage-0.2.8.tgz#7c19b41dab363737e0015733a98e8f5252925db9"
-    integrity sha512-XM3wBlpUVWnMwBnHveWP1NgIsJDtvpzDsORO+DP8CQAsYizILKbiBC3n2w+eW/sLOGLuEYEUZk2zPFD/xpPM3Q==
+  "@thirdweb-dev/storage@^1.0.2":
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/@thirdweb-dev/storage/-/storage-1.0.2.tgz#17bae94a7a4a31c7d3a4a1dcc88e47940a6ebf95"
+    integrity sha512-zoOr0wrqF9q1vLfp1Y8FAJ2RZVDte4XYuzTSgvVFRBCuY3/SbwZ0ml3GD2C2BV9wd6w9Du2W+GqIbcJOo7DeLQ==
     dependencies:
       cross-fetch "^3.1.5"
       form-data "^4.0.0"
-      zod "^3.11.6"
+      uuid "^9.0.0"
   
   "@truffle/abi-utils@^0.3.2":
     version "0.3.2"
@@ -8003,19 +8020,6 @@ Lockfile:
       semver "^5.5.0"
       tmp "0.0.33"
   
-  solc@^0.8.17:
-    version "0.8.17"
-    resolved "https://registry.yarnpkg.com/solc/-/solc-0.8.17.tgz#c748fec6a64bf029ec406aa9b37e75938d1115ae"
-    integrity sha512-Dtidk2XtTTmkB3IKdyeg6wLYopJnBVxdoykN8oP8VY3PQjN16BScYoUJTXFm2OP7P0hXNAqWiJNmmfuELtLf8g==
-    dependencies:
-      command-exists "^1.2.8"
-      commander "^8.1.0"
-      follow-redirects "^1.12.1"
-      js-sha3 "0.8.0"
-      memorystream "^0.3.1"
-      semver "^5.5.0"
-      tmp "0.0.33"
-  
   source-map-support@^0.5.13, source-map-support@^0.5.21, source-map-support@~0.5.20:
     version "0.5.21"
     resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.21.tgz#04fe7c7f9e1ed2d662233c28cb2b35b9f63f6e4f"
@@ -8337,12 +8341,12 @@ Lockfile:
       commander "^2.20.0"
       source-map-support "~0.5.20"
   
-  thirdweb@^0.7.10:
-    version "0.7.11"
-    resolved "https://registry.yarnpkg.com/thirdweb/-/thirdweb-0.7.11.tgz#c20239314a840bd00c1e64cddd6979d11004049b"
-    integrity sha512-FMnGBcyLwB7hiQ13wxZGuY56z6A92FUBELgBfYbm7prh0VOeRIckK4dxGBMcBRy4JTqHXe8AnwVit9ZFPQS4BQ==
+  thirdweb@^0.7.16:
+    version "0.7.16"
+    resolved "https://registry.yarnpkg.com/thirdweb/-/thirdweb-0.7.16.tgz#49cf1a359369680ecbce4e92af28c2e05b4de6d3"
+    integrity sha512-YatCKm5IcuorgdCG7tMmBc8INjjDnX0M664R0oRDD1VuGwkejyzfAab3BdRalkFObiWpK98b08uiHmInaa2mDQ==
     dependencies:
-      "@thirdweb-dev/sdk" "^3.0.0"
+      "@thirdweb-dev/sdk" "^3.0.5"
       async-retry "^1.3.3"
       cbor "^8.1.0"
       commander "^9.1.0"
@@ -8832,6 +8836,11 @@ Lockfile:
     version "3.4.0"
     resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
     integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
+  
+  uuid@^9.0.0:
+    version "9.0.0"
+    resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+    integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
   
   validate-npm-package-name@^4.0.0:
     version "4.0.0"
